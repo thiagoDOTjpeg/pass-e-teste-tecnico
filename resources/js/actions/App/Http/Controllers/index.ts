@@ -1,7 +1,7 @@
-import Settings from './Settings'
+import TodoController from './TodoController'
 
 const Controllers = {
-    Settings: Object.assign(Settings, Settings),
+    TodoController: Object.assign(TodoController, TodoController),
 }
 
 export default Controllers

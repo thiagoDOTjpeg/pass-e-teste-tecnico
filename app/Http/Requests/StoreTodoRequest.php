@@ -22,8 +22,8 @@ class StoreTodoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => "required|string|max:120",
-            "completed" => "sometimes|boolean"
+            'title' => 'required|string|max:120',
+            'completed' => 'sometimes|boolean',
         ];
     }
 }

@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-
-    public function destroy($id): JsonResponse {
+    public function destroy($id): JsonResponse
+    {
         $todo = Todo::findOrFail($id);
         $todo->delete();
 
@@ -25,18 +25,21 @@ class TodoController extends Controller
         return response()->json($todo);
     }
 
-    public function store(StoreTodoRequest $request): JsonResponse {
+    public function store(StoreTodoRequest $request): JsonResponse
+    {
 
         $todo = Todo::create($request->validated());
+
         return response()->json($todo, 201);
     }
 
-    public function index(Request $request): JsonResponse {
-        $perPage = min($request->query("perPage", 15), 50);
+    public function index(Request $request): JsonResponse
+    {
+        $perPage = min($request->query('perPage', 15), 50);
 
         $todos = Todo::query()
-            ->when($request->filled("completed"), function($query) use ($request) {
-                return $query->where("completed", $request->boolean("completed"));
+            ->when($request->filled('completed'), function ($query) use ($request) {
+                return $query->where('completed', $request->boolean('completed'));
             })
             ->latest()
             ->paginate($perPage);
@@ -44,7 +47,8 @@ class TodoController extends Controller
         return response()->json($todos, 200);
     }
 
-    public function update(UpdateTodoRequest $request, $id): JsonResponse {
+    public function update(UpdateTodoRequest $request, $id): JsonResponse
+    {
         $todo = Todo::findOrFail($id);
         $todo->update($request->validated());
 

@@ -9,9 +9,9 @@ class Todo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["title", "completed"];
+    protected $fillable = ['title', 'completed'];
 
     protected $casts = [
-        "completed" => "boolean"
+        'completed' => 'boolean',
     ];
 }

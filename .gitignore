@@ -1,0 +1,50 @@
+# Laravel
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Laravel Sail
+docker-compose.override.yml
+
+# IDE / Editor
+/.fleet
+/.idea
+/.vscode
+*.sublime-project
+*.sublime-workspace
+.project
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+.phpunit.cache
+/coverage
+
+# Logs
+*.log
+/storage/logs/*.log
+
+# Cache
+/bootstrap/cache/*.php
+!/bootstrap/cache/.gitkeep
+
+# Debug
+.php-cs-fixer.cache

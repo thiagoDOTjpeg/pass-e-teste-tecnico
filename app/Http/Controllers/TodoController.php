@@ -38,7 +38,7 @@ class TodoController extends Controller
 
         $todos = $request->user()->todos()
             ->when($request->filled("completed"), function ($query) use ($request) {
-                return $query->where('completed', $request->filled("completed"));
+                return $query->where('completed', $request->boolean("completed"));
             })
             ->latest()
             ->paginate($perPage);

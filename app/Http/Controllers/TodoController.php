@@ -27,8 +27,7 @@ class TodoController extends Controller
 
     public function store(StoreTodoRequest $request): JsonResponse
     {
-
-        $todo = Todo::create($request->validated());
+        $todo = $request->user()->todos()->create($request->validated());
 
         return response()->json($todo, 201);
     }
@@ -37,9 +36,9 @@ class TodoController extends Controller
     {
         $perPage = min($request->query('perPage', 15), 50);
 
-        $todos = Todo::query()
-            ->when($request->filled('completed'), function ($query) use ($request) {
-                return $query->where('completed', $request->boolean('completed'));
+        $todos = $request->user()->todos()
+            ->when($request->filled("completed"), function ($query) use ($request) {
+                return $query->where('completed', $request->filled("completed"));
             })
             ->latest()
             ->paginate($perPage);

@@ -141,12 +141,12 @@ index.form = indexForm
 * @see app/Http/Controllers/TodoController.php:13
 * @route '/api/todos/{id}'
 */
-export const destroy = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
-    url: destroy.url(args, options),
+const destroy00bc4df2b28f3e9c61808d5cc0f00224 = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: destroy00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'delete',
 })
 
-destroy.definition = {
+destroy00bc4df2b28f3e9c61808d5cc0f00224.definition = {
     methods: ["delete"],
     url: '/api/todos/{id}',
 } satisfies RouteDefinition<["delete"]>
@@ -156,7 +156,7 @@ destroy.definition = {
 * @see app/Http/Controllers/TodoController.php:13
 * @route '/api/todos/{id}'
 */
-destroy.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
+destroy00bc4df2b28f3e9c61808d5cc0f00224.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { id: args }
     }
@@ -173,7 +173,7 @@ destroy.url = (args: { id: string | number } | [id: string | number ] | string |
         id: args.id,
     }
 
-    return destroy.definition.url
+    return destroy00bc4df2b28f3e9c61808d5cc0f00224.definition.url
             .replace('{id}', parsedArgs.id.toString())
             .replace(/\/+$/, '') + queryParams(options)
 }
@@ -183,8 +183,8 @@ destroy.url = (args: { id: string | number } | [id: string | number ] | string |
 * @see app/Http/Controllers/TodoController.php:13
 * @route '/api/todos/{id}'
 */
-destroy.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
-    url: destroy.url(args, options),
+destroy00bc4df2b28f3e9c61808d5cc0f00224.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: destroy00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'delete',
 })
 
@@ -193,8 +193,8 @@ destroy.delete = (args: { id: string | number } | [id: string | number ] | strin
 * @see app/Http/Controllers/TodoController.php:13
 * @route '/api/todos/{id}'
 */
-const destroyForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
+const destroy00bc4df2b28f3e9c61808d5cc0f00224Form = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy00bc4df2b28f3e9c61808d5cc0f00224.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -208,8 +208,8 @@ const destroyForm = (args: { id: string | number } | [id: string | number ] | st
 * @see app/Http/Controllers/TodoController.php:13
 * @route '/api/todos/{id}'
 */
-destroyForm.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
+destroy00bc4df2b28f3e9c61808d5cc0f00224Form.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy00bc4df2b28f3e9c61808d5cc0f00224.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -218,19 +218,107 @@ destroyForm.delete = (args: { id: string | number } | [id: string | number ] | s
     method: 'post',
 })
 
-destroy.form = destroyForm
+destroy00bc4df2b28f3e9c61808d5cc0f00224.form = destroy00bc4df2b28f3e9c61808d5cc0f00224Form
+/**
+* @see \App\Http\Controllers\TodoController::destroy
+* @see app/Http/Controllers/TodoController.php:13
+* @route '/api/todos/{todo}'
+*/
+const destroy5494ccd4639d709a242e083b3519923b = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: destroy5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'delete',
+})
+
+destroy5494ccd4639d709a242e083b3519923b.definition = {
+    methods: ["delete"],
+    url: '/api/todos/{todo}',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \App\Http\Controllers\TodoController::destroy
+* @see app/Http/Controllers/TodoController.php:13
+* @route '/api/todos/{todo}'
+*/
+destroy5494ccd4639d709a242e083b3519923b.url = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { todo: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            todo: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        todo: args.todo,
+    }
+
+    return destroy5494ccd4639d709a242e083b3519923b.definition.url
+            .replace('{todo}', parsedArgs.todo.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\TodoController::destroy
+* @see app/Http/Controllers/TodoController.php:13
+* @route '/api/todos/{todo}'
+*/
+destroy5494ccd4639d709a242e083b3519923b.delete = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: destroy5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'delete',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::destroy
+* @see app/Http/Controllers/TodoController.php:13
+* @route '/api/todos/{todo}'
+*/
+const destroy5494ccd4639d709a242e083b3519923bForm = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy5494ccd4639d709a242e083b3519923b.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::destroy
+* @see app/Http/Controllers/TodoController.php:13
+* @route '/api/todos/{todo}'
+*/
+destroy5494ccd4639d709a242e083b3519923bForm.delete = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy5494ccd4639d709a242e083b3519923b.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy5494ccd4639d709a242e083b3519923b.form = destroy5494ccd4639d709a242e083b3519923bForm
+
+export const destroy = {
+    '/api/todos/{id}': destroy00bc4df2b28f3e9c61808d5cc0f00224,
+    '/api/todos/{todo}': destroy5494ccd4639d709a242e083b3519923b,
+}
 
 /**
 * @see \App\Http\Controllers\TodoController::show
 * @see app/Http/Controllers/TodoController.php:21
 * @route '/api/todos/{id}'
 */
-export const show = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: show.url(args, options),
+const show00bc4df2b28f3e9c61808d5cc0f00224 = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'get',
 })
 
-show.definition = {
+show00bc4df2b28f3e9c61808d5cc0f00224.definition = {
     methods: ["get","head"],
     url: '/api/todos/{id}',
 } satisfies RouteDefinition<["get","head"]>
@@ -240,7 +328,7 @@ show.definition = {
 * @see app/Http/Controllers/TodoController.php:21
 * @route '/api/todos/{id}'
 */
-show.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
+show00bc4df2b28f3e9c61808d5cc0f00224.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { id: args }
     }
@@ -257,7 +345,7 @@ show.url = (args: { id: string | number } | [id: string | number ] | string | nu
         id: args.id,
     }
 
-    return show.definition.url
+    return show00bc4df2b28f3e9c61808d5cc0f00224.definition.url
             .replace('{id}', parsedArgs.id.toString())
             .replace(/\/+$/, '') + queryParams(options)
 }
@@ -267,8 +355,8 @@ show.url = (args: { id: string | number } | [id: string | number ] | string | nu
 * @see app/Http/Controllers/TodoController.php:21
 * @route '/api/todos/{id}'
 */
-show.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: show.url(args, options),
+show00bc4df2b28f3e9c61808d5cc0f00224.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'get',
 })
 
@@ -277,8 +365,8 @@ show.get = (args: { id: string | number } | [id: string | number ] | string | nu
 * @see app/Http/Controllers/TodoController.php:21
 * @route '/api/todos/{id}'
 */
-show.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: show.url(args, options),
+show00bc4df2b28f3e9c61808d5cc0f00224.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: show00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'head',
 })
 
@@ -287,8 +375,8 @@ show.head = (args: { id: string | number } | [id: string | number ] | string | n
 * @see app/Http/Controllers/TodoController.php:21
 * @route '/api/todos/{id}'
 */
-const showForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
+const show00bc4df2b28f3e9c61808d5cc0f00224Form = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'get',
 })
 
@@ -297,8 +385,8 @@ const showForm = (args: { id: string | number } | [id: string | number ] | strin
 * @see app/Http/Controllers/TodoController.php:21
 * @route '/api/todos/{id}'
 */
-showForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
+show00bc4df2b28f3e9c61808d5cc0f00224Form.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'get',
 })
 
@@ -307,8 +395,8 @@ showForm.get = (args: { id: string | number } | [id: string | number ] | string 
 * @see app/Http/Controllers/TodoController.php:21
 * @route '/api/todos/{id}'
 */
-showForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
+show00bc4df2b28f3e9c61808d5cc0f00224Form.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show00bc4df2b28f3e9c61808d5cc0f00224.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -317,19 +405,122 @@ showForm.head = (args: { id: string | number } | [id: string | number ] | string
     method: 'get',
 })
 
-show.form = showForm
+show00bc4df2b28f3e9c61808d5cc0f00224.form = show00bc4df2b28f3e9c61808d5cc0f00224Form
+/**
+* @see \App\Http\Controllers\TodoController::show
+* @see app/Http/Controllers/TodoController.php:21
+* @route '/api/todos/{todo}'
+*/
+const show5494ccd4639d709a242e083b3519923b = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'get',
+})
+
+show5494ccd4639d709a242e083b3519923b.definition = {
+    methods: ["get","head"],
+    url: '/api/todos/{todo}',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\TodoController::show
+* @see app/Http/Controllers/TodoController.php:21
+* @route '/api/todos/{todo}'
+*/
+show5494ccd4639d709a242e083b3519923b.url = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { todo: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            todo: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        todo: args.todo,
+    }
+
+    return show5494ccd4639d709a242e083b3519923b.definition.url
+            .replace('{todo}', parsedArgs.todo.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\TodoController::show
+* @see app/Http/Controllers/TodoController.php:21
+* @route '/api/todos/{todo}'
+*/
+show5494ccd4639d709a242e083b3519923b.get = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::show
+* @see app/Http/Controllers/TodoController.php:21
+* @route '/api/todos/{todo}'
+*/
+show5494ccd4639d709a242e083b3519923b.head = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: show5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::show
+* @see app/Http/Controllers/TodoController.php:21
+* @route '/api/todos/{todo}'
+*/
+const show5494ccd4639d709a242e083b3519923bForm = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::show
+* @see app/Http/Controllers/TodoController.php:21
+* @route '/api/todos/{todo}'
+*/
+show5494ccd4639d709a242e083b3519923bForm.get = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::show
+* @see app/Http/Controllers/TodoController.php:21
+* @route '/api/todos/{todo}'
+*/
+show5494ccd4639d709a242e083b3519923bForm.head = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show5494ccd4639d709a242e083b3519923b.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show5494ccd4639d709a242e083b3519923b.form = show5494ccd4639d709a242e083b3519923bForm
+
+export const show = {
+    '/api/todos/{id}': show00bc4df2b28f3e9c61808d5cc0f00224,
+    '/api/todos/{todo}': show5494ccd4639d709a242e083b3519923b,
+}
 
 /**
 * @see \App\Http\Controllers\TodoController::update
 * @see app/Http/Controllers/TodoController.php:50
 * @route '/api/todos/{id}'
 */
-export const update = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
-    url: update.url(args, options),
+const update00bc4df2b28f3e9c61808d5cc0f00224 = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'put',
 })
 
-update.definition = {
+update00bc4df2b28f3e9c61808d5cc0f00224.definition = {
     methods: ["put"],
     url: '/api/todos/{id}',
 } satisfies RouteDefinition<["put"]>
@@ -339,7 +530,7 @@ update.definition = {
 * @see app/Http/Controllers/TodoController.php:50
 * @route '/api/todos/{id}'
 */
-update.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
+update00bc4df2b28f3e9c61808d5cc0f00224.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { id: args }
     }
@@ -356,7 +547,7 @@ update.url = (args: { id: string | number } | [id: string | number ] | string | 
         id: args.id,
     }
 
-    return update.definition.url
+    return update00bc4df2b28f3e9c61808d5cc0f00224.definition.url
             .replace('{id}', parsedArgs.id.toString())
             .replace(/\/+$/, '') + queryParams(options)
 }
@@ -366,8 +557,8 @@ update.url = (args: { id: string | number } | [id: string | number ] | string | 
 * @see app/Http/Controllers/TodoController.php:50
 * @route '/api/todos/{id}'
 */
-update.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
-    url: update.url(args, options),
+update00bc4df2b28f3e9c61808d5cc0f00224.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update00bc4df2b28f3e9c61808d5cc0f00224.url(args, options),
     method: 'put',
 })
 
@@ -376,8 +567,8 @@ update.put = (args: { id: string | number } | [id: string | number ] | string | 
 * @see app/Http/Controllers/TodoController.php:50
 * @route '/api/todos/{id}'
 */
-const updateForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
+const update00bc4df2b28f3e9c61808d5cc0f00224Form = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update00bc4df2b28f3e9c61808d5cc0f00224.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -391,8 +582,8 @@ const updateForm = (args: { id: string | number } | [id: string | number ] | str
 * @see app/Http/Controllers/TodoController.php:50
 * @route '/api/todos/{id}'
 */
-updateForm.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
+update00bc4df2b28f3e9c61808d5cc0f00224Form.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update00bc4df2b28f3e9c61808d5cc0f00224.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -401,7 +592,120 @@ updateForm.put = (args: { id: string | number } | [id: string | number ] | strin
     method: 'post',
 })
 
-update.form = updateForm
+update00bc4df2b28f3e9c61808d5cc0f00224.form = update00bc4df2b28f3e9c61808d5cc0f00224Form
+/**
+* @see \App\Http\Controllers\TodoController::update
+* @see app/Http/Controllers/TodoController.php:50
+* @route '/api/todos/{todo}'
+*/
+const update5494ccd4639d709a242e083b3519923b = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'put',
+})
+
+update5494ccd4639d709a242e083b3519923b.definition = {
+    methods: ["put","patch"],
+    url: '/api/todos/{todo}',
+} satisfies RouteDefinition<["put","patch"]>
+
+/**
+* @see \App\Http\Controllers\TodoController::update
+* @see app/Http/Controllers/TodoController.php:50
+* @route '/api/todos/{todo}'
+*/
+update5494ccd4639d709a242e083b3519923b.url = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { todo: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            todo: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        todo: args.todo,
+    }
+
+    return update5494ccd4639d709a242e083b3519923b.definition.url
+            .replace('{todo}', parsedArgs.todo.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\TodoController::update
+* @see app/Http/Controllers/TodoController.php:50
+* @route '/api/todos/{todo}'
+*/
+update5494ccd4639d709a242e083b3519923b.put = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'put',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::update
+* @see app/Http/Controllers/TodoController.php:50
+* @route '/api/todos/{todo}'
+*/
+update5494ccd4639d709a242e083b3519923b.patch = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+    url: update5494ccd4639d709a242e083b3519923b.url(args, options),
+    method: 'patch',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::update
+* @see app/Http/Controllers/TodoController.php:50
+* @route '/api/todos/{todo}'
+*/
+const update5494ccd4639d709a242e083b3519923bForm = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update5494ccd4639d709a242e083b3519923b.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::update
+* @see app/Http/Controllers/TodoController.php:50
+* @route '/api/todos/{todo}'
+*/
+update5494ccd4639d709a242e083b3519923bForm.put = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update5494ccd4639d709a242e083b3519923b.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::update
+* @see app/Http/Controllers/TodoController.php:50
+* @route '/api/todos/{todo}'
+*/
+update5494ccd4639d709a242e083b3519923bForm.patch = (args: { todo: string | number } | [todo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update5494ccd4639d709a242e083b3519923b.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update5494ccd4639d709a242e083b3519923b.form = update5494ccd4639d709a242e083b3519923bForm
+
+export const update = {
+    '/api/todos/{id}': update00bc4df2b28f3e9c61808d5cc0f00224,
+    '/api/todos/{todo}': update5494ccd4639d709a242e083b3519923b,
+}
 
 const TodoController = { store, index, destroy, show, update }
 

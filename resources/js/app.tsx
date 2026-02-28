@@ -1,4 +1,5 @@
 import { createInertiaApp } from "@inertiajs/react";
+import axios from "axios";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { createRoot } from "react-dom/client";
 import "../css/app.css";
@@ -23,3 +24,6 @@ void createInertiaApp({
     color: "#4B5563",
   },
 });
+
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;

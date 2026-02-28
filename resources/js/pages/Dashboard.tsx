@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type {Todo} from "@/types";
 import type {PaginatedResponse, PaginationInfo} from "@/types/pagination";
 import {TodoPagination} from "@/components/todo/TodoPagination";
+import AppLayout from "@/layout/AppLayout";
 
 export default function Dashboard() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -149,3 +150,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+Dashboard.layout = (page: React.ReactNode) => <AppLayout children={page} />;

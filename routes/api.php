@@ -13,3 +13,7 @@ Route::get('/todos', [TodoController::class, 'index']);
 Route::delete('/todos/{id}', [TodoController::class, 'destroy']);
 Route::get('/todos/{id}', [TodoController::class, 'show']);
 Route::put('/todos/{id}', [TodoController::class, 'update']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('todos', TodoController::class);
+});

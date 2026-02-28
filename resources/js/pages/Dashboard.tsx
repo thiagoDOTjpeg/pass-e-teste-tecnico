@@ -2,7 +2,7 @@ import { Head } from "@inertiajs/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import type { SyntheticEvent } from "react";
-import DeleteTodoConfirmDialog from "@/components/dialog/delete-todo-confirm-dialog";
+import DeleteTodoConfirmDialog from "@/components/dialog/DeleteTodoConfirmDialog";
 import {TodoFilters} from "@/components/todo/TodoFilters";
 import {TodoForm} from "@/components/todo/TodoForm";
 import {TodoList} from "@/components/todo/TodoList";

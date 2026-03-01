@@ -19,12 +19,12 @@ export default function Login() {
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center p-4">
+        <div className="flex min-h-screen items-center justify-center">
             <Head title="Entrar" />
-            <Card className="w-full max-w-md">
+            <Card className="w-full max-w-xl px-16 py-12">
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl font-bold">Entrar</CardTitle>
-                    <CardDescription>
+                    <CardDescription className="py-4">
                         Introduza o seu e-mail e palavra-passe para aceder ao dashboard.
                     </CardDescription>
                 </CardHeader>
@@ -77,9 +77,9 @@ export default function Login() {
                         </Button>
                     </form>
                     <div className="mt-4 text-center text-sm">
-                        Não tem uma conta?{" "}
+                        Não tem uma conta?{" "} <br />
                         <Link href="/register" className="underline underline-offset-4">
-                            Registe-se
+                            Registre-se
                         </Link>
                     </div>
                 </CardContent>

@@ -1,8 +1,8 @@
 import {Head, Link, useForm} from "@inertiajs/react";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {Input} from "@/components/ui/input";
+import {Label} from "@/components/ui/label";
 
 export default function RegisterPage() {
     const { data, setData, post, processing, errors } = useForm({
@@ -20,7 +20,7 @@ export default function RegisterPage() {
     return (
         <div className="flex min-h-screen items-center justify-center p-4">
             <Head title="Criar Conta" />
-            <Card className="w-full max-w-md">
+            <Card className="w-full max-w-xl px-16 py-12">
                 <CardHeader>
                     <CardTitle className="text-2xl">Criar Conta</CardTitle>
                     <CardDescription>Preencha os dados abaixo para começar.</CardDescription>
@@ -69,13 +69,13 @@ export default function RegisterPage() {
                             />
                         </div>
 
-                        <Button type="submit" className="w-full" disabled={processing}>
+                        <Button type="submit" className="w-full mt-4" disabled={processing}>
                             {processing ? "Criando conta..." : "Registrar"}
                         </Button>
                     </form>
 
                     <div className="mt-4 text-center text-sm">
-                        Já tem uma conta?{" "}
+                        Já tem uma conta?{" "} <br />
                         <Link href="/login" className="underline underline-offset-4">
                             Entrar
                         </Link>

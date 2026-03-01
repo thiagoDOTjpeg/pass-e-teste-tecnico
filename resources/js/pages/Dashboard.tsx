@@ -80,23 +80,27 @@ export default function Dashboard() {
       } else {
         setCurrentPage(1);
       }
-      toast("Tarefa adicionada com sucesso")
+      toast.success("Tarefa adicionada com sucesso")
     } catch {
-      toast("Ocorreu um erro ao salvar sua tarefa");
+      toast.error("Ocorreu um erro ao salvar sua tarefa");
     }
   };
 
   const handleToggleTodo = async (id: number, currentStatus: boolean) => {
     try {
-      await axios.put(`/api/todos/${id}`, { completed: !currentStatus });
+      const response = await axios.put<Todo>(`/api/todos/${id}`, {
+        completed: !currentStatus
+      });
+
       setTodos(
-        todos.map((t) =>
-          t.id === id ? { ...t, completed: !currentStatus } : t,
-        ),
+          todos.map((t) =>
+              t.id === id ? response.data : t
+          ),
       );
-      toast("Tarefa atualizda com sucesso")
+
+      toast.success("Tarefa atualizada com sucesso");
     } catch {
-      toast("Erro ao atualizar status");
+      toast.error("Erro ao atualizar status");
     }
   };
 
@@ -108,8 +112,9 @@ export default function Dashboard() {
       await axios.delete(`/api/todos/${todoToDelete.id}`);
       setTodos(todos.filter(t => t.id !== todoToDelete.id));
       setTodoToDelete(null);
+      toast.success("Tarefa deletada com sucesso")
     } catch {
-      toast("Erro ao apagar tarefa");
+      toast.error("Erro ao apagar tarefa");
     } finally {
       setIsDeleteLoading(false);
     }

@@ -13,7 +13,7 @@ class TodoController extends Controller
     public function destroy(Request $request, $id): JsonResponse
     {
         $todo = $request->user()->todos()->findOrFail($id);
-        $todo.delete();
+        $todo->delete();
 
         return response()->json(null, 204);
     }

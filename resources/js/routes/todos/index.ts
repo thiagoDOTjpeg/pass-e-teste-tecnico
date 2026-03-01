@@ -1,61 +1,5 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
-* @see \App\Http\Controllers\TodoController::store
-* @see app/Http/Controllers/TodoController.php:28
-* @route '/api/todos'
-*/
-export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: store.url(options),
-    method: 'post',
-})
-
-store.definition = {
-    methods: ["post"],
-    url: '/api/todos',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\TodoController::store
-* @see app/Http/Controllers/TodoController.php:28
-* @route '/api/todos'
-*/
-store.url = (options?: RouteQueryOptions) => {
-    return store.definition.url + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\TodoController::store
-* @see app/Http/Controllers/TodoController.php:28
-* @route '/api/todos'
-*/
-store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\TodoController::store
-* @see app/Http/Controllers/TodoController.php:28
-* @route '/api/todos'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\TodoController::store
-* @see app/Http/Controllers/TodoController.php:28
-* @route '/api/todos'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
-
-/**
 * @see \App\Http\Controllers\TodoController::index
 * @see app/Http/Controllers/TodoController.php:35
 * @route '/api/todos'
@@ -135,6 +79,62 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 })
 
 index.form = indexForm
+
+/**
+* @see \App\Http\Controllers\TodoController::store
+* @see app/Http/Controllers/TodoController.php:28
+* @route '/api/todos'
+*/
+export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+store.definition = {
+    methods: ["post"],
+    url: '/api/todos',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\TodoController::store
+* @see app/Http/Controllers/TodoController.php:28
+* @route '/api/todos'
+*/
+store.url = (options?: RouteQueryOptions) => {
+    return store.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\TodoController::store
+* @see app/Http/Controllers/TodoController.php:28
+* @route '/api/todos'
+*/
+store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::store
+* @see app/Http/Controllers/TodoController.php:28
+* @route '/api/todos'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\TodoController::store
+* @see app/Http/Controllers/TodoController.php:28
+* @route '/api/todos'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\TodoController::show
@@ -429,8 +429,8 @@ destroyForm.delete = (args: { todo: string | number } | [todo: string | number ]
 destroy.form = destroyForm
 
 const todos = {
-    store: Object.assign(store, store),
     index: Object.assign(index, index),
+    store: Object.assign(store, store),
     show: Object.assign(show, show),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),

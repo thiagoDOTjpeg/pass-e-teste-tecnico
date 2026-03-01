@@ -11,7 +11,8 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
-    public function todos(): HasMany {
+    public function todos(): HasMany
+    {
         return $this->hasMany(Todo::class);
     }
 

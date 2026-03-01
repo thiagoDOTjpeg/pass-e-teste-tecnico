@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-    public function destroy($id): JsonResponse
+    public function destroy(Request $request, $id): JsonResponse
     {
-        $todo = Todo::findOrFail($id);
-        $todo->delete();
+        $todo = $request->user()->todos()->findOrFail($id);
+        $todo.delete();
 
         return response()->json(null, 204);
     }
@@ -37,8 +37,8 @@ class TodoController extends Controller
         $perPage = min($request->query('perPage', 15), 50);
 
         $todos = $request->user()->todos()
-            ->when($request->filled("completed"), function ($query) use ($request) {
-                return $query->where('completed', $request->boolean("completed"));
+            ->when($request->filled('completed'), function ($query) use ($request) {
+                return $query->where('completed', $request->boolean('completed'));
             })
             ->latest()
             ->paginate($perPage);

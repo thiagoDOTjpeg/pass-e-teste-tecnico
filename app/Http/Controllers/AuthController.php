@@ -12,15 +12,18 @@ use Inertia\Inertia;
 
 class AuthController extends Controller
 {
-    public function showLogin() {
+    public function showLogin()
+    {
         return Inertia::render('auth/Login');
     }
 
-    public function showRegister() {
+    public function showRegister()
+    {
         return Inertia::render('auth/Register');
     }
 
-    public function login(LoginUserRequest $request) {
+    public function login(LoginUserRequest $request)
+    {
         $credentials = $request->validated();
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
@@ -39,6 +42,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 

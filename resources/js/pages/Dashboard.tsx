@@ -4,6 +4,7 @@ import type {ReactNode} from "react";
 import { useEffect, useState} from "react";
 import {toast} from "sonner";
 import DeleteTodoConfirmDialog from "@/components/dialog/DeleteTodoConfirmDialog";
+import EditTodoDialog from "@/components/dialog/EditTodoDialog";
 import {TodoFilters} from "@/components/todo/TodoFilters";
 import {TodoForm} from "@/components/todo/TodoForm";
 import {TodoList} from "@/components/todo/TodoList";
@@ -23,7 +24,9 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [todoToDelete, setTodoToDelete] = useState<Todo | null>(null);
   const [isDeleteLoading, setIsDeleteLoading] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
+  const [todoToEdit, setTodoToEdit] = useState<Todo | null>(null);
+  const [isEditLoading, setIsEditLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -58,6 +61,22 @@ export default function Dashboard() {
   const handlePerPageChange = (val: string) => {
     setPerPage(val);
     setCurrentPage(1);
+  }
+
+  const handleEditTitle = async (id: number, title: string) => {
+    try {
+      setIsEditLoading(true);
+      const response = await axios.put<Todo>(`/api/todos/${id}`, { title });
+      setTodos((prevState) =>
+          prevState.map((t) => (t.id === id ? response.data : t))
+      );
+
+      toast.success("Tarefa atualizada com sucesso!");
+    } catch {
+      toast.error("Ocorreu um erro ao atualizar a tarefa");
+    } finally {
+      setIsEditLoading(false);
+    }
   };
 
   const handleAddTodo = async (title: string) => {
@@ -145,6 +164,7 @@ export default function Dashboard() {
                   isLoading={isLoading}
                   onToggle={handleToggleTodo}
                   onDeleteRequest={setTodoToDelete}
+                  onEditRequest={setTodoToEdit}
               />
 
               <TodoPagination
@@ -165,6 +185,15 @@ export default function Dashboard() {
           onConfirm={handleConfirmDelete}
           todoTitle={todoToDelete?.title || ""}
           loading={isDeleteLoading}
+      />
+
+      <EditTodoDialog
+          key={todoToEdit?.id || "empty-dialog"}
+          todo={todoToEdit}
+          open={!!todoToEdit}
+          onOpenChange={(open) => !open && setTodoToEdit(null)}
+          onConfirm={handleEditTitle}
+          loading={isEditLoading}
       />
     </div>
   );

@@ -1,26 +1,28 @@
 import { Head } from "@inertiajs/react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import type { SyntheticEvent } from "react";
+import type {ReactNode} from "react";
+import { useEffect, useState} from "react";
+import {toast} from "sonner";
 import DeleteTodoConfirmDialog from "@/components/dialog/DeleteTodoConfirmDialog";
 import {TodoFilters} from "@/components/todo/TodoFilters";
 import {TodoForm} from "@/components/todo/TodoForm";
 import {TodoList} from "@/components/todo/TodoList";
+import {TodoPagination} from "@/components/todo/TodoPagination";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import AppLayout from "@/layout/AppLayout";
 import type {Todo} from "@/types";
 import type {PaginatedResponse, PaginationInfo} from "@/types/pagination";
-import {TodoPagination} from "@/components/todo/TodoPagination";
-import AppLayout from "@/layout/AppLayout";
+
+export type FilterStatus = "all" | "completed" | "pending";
 
 export default function Dashboard() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [perPage, setPerPage] = useState("10");
-  const [onlyCompleted, setOnlyCompleted] = useState(false);
+  const [filterStatus, setFilterStatus] = useState<"all" | "completed" | "pending">("all");
   const [pagination, setPagination] = useState<PaginationInfo | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [todoToDelete, setTodoToDelete] = useState<Todo | null>(null);
   const [isDeleteLoading, setIsDeleteLoading] = useState(false);
-  const [newTodo, setNewTodo] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -28,13 +30,20 @@ export default function Dashboard() {
 
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await axios.get<PaginatedResponse<Todo>>(`/api/todos?perPage=${perPage}&page=${currentPage}&completed=${onlyCompleted}`, { signal: controller.signal });
+        let url = `/api/todos?perPage=${perPage}&page=${currentPage}`;
+
+        if (filterStatus === "completed") url += "&completed=true";
+        if (filterStatus === "pending") url += "&completed=false";
+
+        const response = await axios.get<PaginatedResponse<Todo>>(url, {
+          signal: controller.signal
+        });
+
         setTodos(response.data.data);
         setPagination(response.data);
-      } catch (error){
-        if(axios.isCancel(error)) return;
-
-        alert("Ocorreu um erro inesperado ao buscar as tarefas");
+      } catch (error) {
+        if (axios.isCancel(error)) return;
+        toast.error("Erro ao buscar tarefas");
       } finally {
         setIsLoading(false);
       }
@@ -44,7 +53,7 @@ export default function Dashboard() {
     return () => {
       controller.abort();
     }
-  }, [currentPage, perPage, onlyCompleted]);
+  }, [currentPage, perPage, filterStatus]);
 
   const handlePerPageChange = (val: string) => {
     setPerPage(val);
@@ -71,8 +80,9 @@ export default function Dashboard() {
       } else {
         setCurrentPage(1);
       }
+      toast("Tarefa adicionada com sucesso")
     } catch {
-      alert("Ocorreu um erro ao salvar sua tarefa");
+      toast("Ocorreu um erro ao salvar sua tarefa");
     }
   };
 
@@ -84,8 +94,9 @@ export default function Dashboard() {
           t.id === id ? { ...t, completed: !currentStatus } : t,
         ),
       );
+      toast("Tarefa atualizda com sucesso")
     } catch {
-      console.error("Erro ao atualizar status");
+      toast("Erro ao atualizar status");
     }
   };
 
@@ -98,7 +109,7 @@ export default function Dashboard() {
       setTodos(todos.filter(t => t.id !== todoToDelete.id));
       setTodoToDelete(null);
     } catch {
-      alert("Erro ao apagar");
+      toast("Erro ao apagar tarefa");
     } finally {
       setIsDeleteLoading(false);
     }
@@ -117,8 +128,11 @@ export default function Dashboard() {
               <TodoForm onAdd={handleAddTodo} />
 
               <TodoFilters
-                  checked={onlyCompleted}
-                  onCheckedChange={(val) => { setOnlyCompleted(val); setCurrentPage(1); }}
+                  value={filterStatus}
+                  onValueChange={(val: FilterStatus) => {
+                    setFilterStatus(val);
+                    setCurrentPage(1);
+                  }}
               />
 
               <TodoList
@@ -151,4 +165,4 @@ export default function Dashboard() {
   );
 }
 
-Dashboard.layout = (page: React.ReactNode) => <AppLayout children={page} />;
+Dashboard.layout = (page: ReactNode) => <AppLayout children={page} />;

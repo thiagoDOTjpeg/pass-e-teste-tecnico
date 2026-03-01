@@ -1,24 +1,27 @@
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
+import type {FilterStatus} from "@/pages/Dashboard";
 
 interface TodoFiltersProps {
-    checked: boolean;
-    onCheckedChange: (val: boolean) => void;
+    value: FilterStatus;
+    onValueChange: (val: FilterStatus) => void;
 }
 
-export function TodoFilters({ checked, onCheckedChange }: TodoFiltersProps) {
+export function TodoFilters({ value, onValueChange }: TodoFiltersProps) {
     return (
-        <div className="mb-12 flex items-center justify-end gap-2 border-b pb-8">
-            <div className="flex items-center space-x-2 bg-secondary/50 px-3 py-1.5 rounded-full border">
-                <Switch
-                    id="completed-filter"
-                    checked={checked}
-                    onCheckedChange={onCheckedChange}
-                />
-                <Label htmlFor="completed-filter" className="text-xs font-medium cursor-pointer">
-                    Ver apenas concluídas
-                </Label>
-            </div>
+        <div className="mb-8 flex items-center justify-end gap-4 border-b pb-6">
+      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+        Filtrar por:
+      </span>
+            <Select value={value} onValueChange={onValueChange}>
+                <SelectTrigger className="w-45 h-9">
+                    <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="all">Todas as tarefas</SelectItem>
+                    <SelectItem value="pending">Pendentes</SelectItem>
+                    <SelectItem value="completed">Concluídas</SelectItem>
+                </SelectContent>
+            </Select>
         </div>
     );
 }

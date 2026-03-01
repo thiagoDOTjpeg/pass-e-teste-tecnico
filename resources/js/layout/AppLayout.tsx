@@ -1,5 +1,6 @@
 import { Link, usePage, router } from "@inertiajs/react";
 import { LogOut } from "lucide-react";
+import type {ReactNode} from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,8 +11,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {Toaster} from "@/components/ui/sonner";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default function AppLayout({ children }: { children: ReactNode }) {
     const { auth } = usePage().props as any;
 
     const handleLogout = () => {
@@ -60,6 +62,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
             <main className="container mx-auto py-6 px-4">
                 {children}
+                <Toaster />
             </main>
         </div>
     );

@@ -26,7 +26,7 @@ class AuthControllerTest extends TestCase
         $response->assertStatus(200);
         $response->assertInertia(fn (Assert $page) => $page->component('auth/Register'));
     }
-z
+
     public function test_user_can_login_with_correct_credentials(): void
     {
         $user = User::factory()->create([

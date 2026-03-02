@@ -48,6 +48,13 @@ docker compose up -d --build
 http://localhost:8000
 ```
 
+4. Acesso com os usuários padrões
+
+```
+email: teste@dasilva.com
+senha: senha123
+```
+
 O Docker Compose irá automaticamente:
 
 - Criar o banco PostgreSQL

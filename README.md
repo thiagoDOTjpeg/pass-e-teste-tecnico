@@ -32,7 +32,7 @@ Aplicação de lista de tarefas (To-Do List) com CRUD completo, desenvolvida com
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/pass-e-teste-tecnico.git
+git clone https://github.com/thiagoDOTjpeg/pass-e-teste-tecnico
 cd pass-e-teste-tecnico
 ```
 

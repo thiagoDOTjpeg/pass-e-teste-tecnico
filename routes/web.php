@@ -1,8 +1,15 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+Route::get('/', function () {
+    return Auth::check() 
+        ? redirect()->route('dashboard') 
+        : redirect()->route('login');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('login');
